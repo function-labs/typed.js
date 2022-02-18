@@ -260,6 +260,12 @@ export default class Typed {
       if (this.smartBackspace) {
         // the remaining part of the current string is equal of the same part of the new string
         let nextString = this.strings[this.arrayPos + 1];
+
+        // if we are on the last string and we are supposed to loop, use the first string as nextString.
+        if ( ! nextString && this.loop ) {
+          nextString = this.strings[0];
+        }
+
         if (
           nextString &&
           curStringAtPosition === nextString.substr(0, curStrPos)
