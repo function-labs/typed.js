@@ -262,7 +262,11 @@ export default class Typed {
         let nextString = this.strings[this.arrayPos + 1];
 
         // if we are on the last string and we are supposed to loop, use the first string as nextString.
-        if ( ! nextString && this.loop ) {
+        if (
+          ! nextString &&
+          this.loop !== false &&
+          this.curLoop !== this.loopCount
+        ) {
           nextString = this.strings[0];
         }
 
